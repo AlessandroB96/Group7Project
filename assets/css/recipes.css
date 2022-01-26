@@ -1,0 +1,29 @@
+
+.title2 {
+    border: 1px solid black;
+
+}
+
+.company {
+    font-family: 'Lobster';
+    color: black;
+}
+
+.logo-recipe {
+    width: 10%;
+    transform: rotate(80deg);
+}
+
+.context {
+    color: black;
+}
+
+.carousel-item {
+    color: black;
+    font-family: 'Mukta', sans-serif;
+}
+
+.carousel-item:hover {
+    color: white;
+    
+}

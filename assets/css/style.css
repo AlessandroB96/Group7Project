@@ -21,6 +21,7 @@ body {
     margin: auto;
 }
 
+
 .hero {
     text-align: center;
     margin-bottom: 40px;
@@ -35,7 +36,7 @@ h6 {
     font-family: 'Mukta', sans-serif;
 }
 
-#dine-out , #dine-in{
+#restaurants , #recipes {
     background-color: red;
     text-align: center;
     text-shadow: none;
@@ -43,6 +44,10 @@ h6 {
     align-items: center;
     justify-content: center;
     
+}
+#restaurants:hover , #recipes:hover {
+   opacity: 60%;
+   color: black;
 }
 
 #ramen-icon , #blender-icon {

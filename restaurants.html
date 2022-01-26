@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/restaurants.css">
+    <title>The Food Conch - Restaurants</title>
+</head>
+<body>
+    
+    <div class="row main-container">
+        <div class="col l3 navigation #ff5252 red accent-2">
+
+                <ul class="nav">
+                  <li><div class="user-view">
+                    <div class="greeting">
+                      <p>The Food Conch.</p>
+                    </div>
+                    <img class="conch2" src="./assets/images/conch.svg">
+                    <p class="left">Welcome to the Food Conch! Enter your zip code below to request restuarant guidance:</p>
+                  </div></li>
+                  <li>
+                    <div>
+                      <input type="text" id="user-input" placeholder="   search..."></input>
+                    
+                        <!-- Dropdown Trigger -->
+                        <a class='dropdown-trigger btn blue-grey darken-3' href='#' data-target='dropdown1'>Radius</a>
+                        <!-- Dropdown Structure -->
+                        <ul id='dropdown1' class='dropdown-content blue-grey darken-3'>
+                            <li class="li1"><a href="#!">10 miles away</a></li>
+                            <li><a href="#!">15 miles away</a></li>
+                            <li><a href="#!">25 miles away</a></li>
+                            <li><a href="#!">50 miles away</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="search-btn-container">
+                        <a class="waves-effect waves-light btn #37474f blue-grey darken-3" id="search-zipcode">Search Zip Code</a>
+                    </div>
+                  </li>
+                </ul>
+        </div>
+
+        <div class="col l5 map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d34073.51565618755!2d-74.03657500623265!3d40.682245623708006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a30a52e5a0f%3A0x61b50e8b5a501d9!2sShake%20Shack!5e0!3m2!1sen!2sus!4v1643227406502!5m2!1sen!2sus" width="" height="" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+        </div>
+
+        <div class="col l4 menu">
+            <div class="menu-content">
+              <h5 class="center">Menu Display</h5>
+            
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./js/restuarant.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
