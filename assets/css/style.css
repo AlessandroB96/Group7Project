@@ -1,0 +1,62 @@
+/*Most of the materialized framework will be used for the dynamically generated data, not the landing page */
+
+body {
+    background-color: rgba(212, 31, 25, 0.507);
+}
+
+.logo-container {
+    text-align: center;
+}
+    
+.logo {
+    font-family: 'Lobster';
+    text-align: center;
+    margin-top: 100px;
+    font-size: 35px;
+}
+
+.conch {
+    transform: rotate(80deg);
+    width: 8%;
+    margin: auto;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 40px;
+    color: black;    
+}
+
+
+h6 {
+    font-family: 'Mukta', sans-serif;
+}
+#hero-message {
+    font-family: 'Mukta', sans-serif;
+}
+
+#dine-out , #dine-in{
+    background-color: red;
+    text-align: center;
+    text-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#ramen-icon , #blender-icon {
+    text-shadow: none;
+    
+}
+
+.buttons {
+    display: flex;
+    flex: 1;
+    margin-left: 350px;
+    margin-right: 350px;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+
