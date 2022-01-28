@@ -15,6 +15,8 @@
 </head>
 <body>
 
+    <!-- original recipe html -->
+
     <!-- <div class="row center contain">
 
         <div class="col l12 main-title">
@@ -39,7 +41,6 @@
         </div>
         
     </div> -->
-
     <div class="row main-container">
         <div class="col l3 navigation #ff5252 red accent-2">
             <ul class="nav">
@@ -48,7 +49,7 @@
                         <div class="greeting">
                             <p>Find a Recipe!</p>
                         </div>
-                        <img class="conch2 center-align" src="./assets/images/conch.svg">
+                        <img class="conch2 center-align responsive-img" src="./assets/images/conch.svg">
                         <p class="left">Welcome to the Food Conch! Choose which Cuisine you'd like make:</p>
                     </div>
                 </li>
@@ -74,21 +75,27 @@
         </div>
 
         <div class="col l5 map recipe-image center-align">
-
-            <img src="https://www.edamam.com/web-img/546/5467abea132f38b6a98e9ad579d62f43.jpg" width="360" height="360" style="border:0; border-radius: 5px;" />
+<!-- 
+            <img src="https://www.edamam.com/web-img/546/5467abea132f38b6a98e9ad579d62f43.jpg" width="450" height="450" style="border:0; border-radius: 5px;" /> -->
             
         </div>
 
         <div class="col l4 menu recipe-info">
             <div class="menu-content recipe-content">
-                <h5 class="center">Menu Display</h5>
+                <h5 class="center">Recipe Display</h5>
+                <p id="link-p">
+                    <span id="from"></span>
+                    <span id="link"></span>
+                </p>
+                <p id="time"></p>
+                <div id="ingredients"></div>
             </div>
         </div>
     </div>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="./js/recipes.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./js/recipes.js"></script>
 </body>
 </html>
