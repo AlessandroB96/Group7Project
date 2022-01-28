@@ -42,13 +42,13 @@ function mealSearch () {
     console.log(data);
     console.log(data.hits[0].recipe.label);
     console.log(data.hits[0].recipe.images.REGULAR.url)
-    $("#recipe-div").find("h1").text(data.hits[0].recipe.label);
-    $("#recipe-div").append
+    // $("#recipe-div").find("h1").text(data.hits[0].recipe.label);
+    // $("#recipe-div").append
 
-    var recipeDiv = $("<div>", {id: "new-div", "class": "image-dive"});
-    var recipeImage = $("<img>", {"src": data.hits[0].recipe.images.REGULAR.url, "alt": "ADD ALT"});
-    $("#box").append(recipeDiv);
-    $("#new-div").append(recipeImage);
+  //   var recipeDiv = $("<div>", {id: "new-div", "class": "image-dive"});
+  //   var recipeImage = $("<img>", {"src": data.hits[0].recipe.images.REGULAR.url, "alt": "ADD ALT"});
+  //   $("#box").append(recipeDiv);
+  //   $("#new-div").append(recipeImage);
 
     // $("#recipe-div").css("background-image", "url(" + data.hits[0].recipe.images.REGULAR.url + ")");
     
