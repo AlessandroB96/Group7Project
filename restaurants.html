@@ -26,22 +26,38 @@
                     <p class="left">Welcome to the Food Conch! Enter your zip code below to request restuarant guidance:</p>
                   </div></li>
                   <li>
-                    <div>
+                    <form>
                       <input type="text" id="user-input" placeholder="   search..."></input>
-                    
+                      
+                    </form>
                         <!-- Dropdown Trigger -->
-                        <a class='dropdown-trigger btn blue-grey darken-3' href='#' data-target='dropdown1' id="drop-down">Radius</a>
+                        <a class='dropdown-trigger btn blue-grey darken-3' href='#' data-target='dropdown1' id="drop-down">Cuisine<span class="material-icons-outlined"></span></a>
                         <!-- Dropdown Structure -->
-                        <ul id='dropdown1' class='dropdown-content blue-grey darken-3'>
-                            <li><a id="10mi">10 miles away</a></li>
-                            <li><a id="15mi">15 miles away</a></li>
-                            <li><a id="25mi">25 miles away</a></li>
+                        <ul id='dropdown1' class='dropdown-content blue-grey darken-3' onclick="getSelectedValue();">
+                            <li value="italian"><a id="italian">Italian</a></li>
+                            <li value="mexican"><a id="mexican">Mexican</a></li>
+                            <li value="japanese"><a id="japanese">Japanese</a></li>
+                            <li value="middle-eastern"><a id="middle-eastern">Middle Eastern</a></li>
+                            <li value="indian"><a id="indian">Indian</a></li>
                         </ul>
-                    </div>
+                      </br>
+
+                      <div class="input-field">
+                        <select>
+                          <option value="" disabled selected>Choose your option</option>
+                          <option value="1">Option 1</option>
+                          <option value="2">Option 2</option>
+                          <option value="3">Option 3</option>
+                        </select>
+                        <label>Materialize Select</label>
+                      </div>
+
+                    </br>
 
                     <div class="search-btn-container">
                         <a class="waves-effect waves-light btn #37474f blue-grey darken-3" id="search-zipcode">Search Zip Code</a>
                     </div>
+                  </form>
                   </li>
                 </ul>
         </div>
@@ -54,6 +70,7 @@
         <div class="col l4 m4 menu">
             <div class="menu-content">
               <h5 class="center">Menu Display</h5>
+              
             
             </div>
         </div>
@@ -61,9 +78,8 @@
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="./js/restuarant.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPDToP2e3guMwtwZaUQcCDZPdt4o0-Ix8&callback=initMap&v=weekly" async></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="js/script.js"></script>
+<script src="./js/restuarant.js"></script>
 </body>
 </html>
