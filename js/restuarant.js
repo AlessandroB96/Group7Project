@@ -1,4 +1,5 @@
-
+// import keys from './apikeys';
+import {mapsJsKey, geocodeKey} from "./apikeys.js";
 
 const italian = document.getElementById('italian');
 const mexican = document.getElementById('mexican');
@@ -10,8 +11,6 @@ const textBox = document.getElementById('user-input');
 const zipCodeBtn = document.getElementById('search-zipcode');
 const gMap = document.getElementById('google-map');
 
-const mapsJsKey = "AIzaSyAPDToP2e3guMwtwZaUQcCDZPdt4o0-Ix8";
-const geocodeKey = "AIzaSyDqRH1nxaTzZ84VzNBJHDoKRPn0u3m3zt8";
 
 
 //listen for submit zip code 
@@ -56,7 +55,7 @@ let ZipCodetoLatlong = function (lat, long) {
     type: ['restaurant']
   };
   
-  service = new google.maps.places.PlacesService(map);
+  let service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback);
   
   function callback(results) {
@@ -64,7 +63,6 @@ let ZipCodetoLatlong = function (lat, long) {
   }
 };
 
-let latLong
 
 
 
@@ -255,7 +253,9 @@ function initMap() {
         infoWindow.open(map, marker);
       });
     */
-    }
+ }
+
+
    initMap();
 
    $(document).ready(function(){
