@@ -1,3 +1,5 @@
+
+
 const italian = document.getElementById('italian');
 const mexican = document.getElementById('mexican');
 const japanese = document.getElementById('japanese');
@@ -9,32 +11,60 @@ const zipCodeBtn = document.getElementById('search-zipcode');
 const gMap = document.getElementById('google-map');
 
 const mapsJsKey = "AIzaSyAPDToP2e3guMwtwZaUQcCDZPdt4o0-Ix8";
+const geocodeKey = "AIzaSyDqRH1nxaTzZ84VzNBJHDoKRPn0u3m3zt8";
 
-let zipCode = '34135';
+
+//listen for submit zip code 
+
+zipCodeBtn.addEventListener('click', geoCode);
+
 
 //geocoding hard coding 
 
-const geocodeKey = "AIzaSyDqRH1nxaTzZ84VzNBJHDoKRPn0u3m3zt8";
+function geoCode(e) {
+  let zipCode = textBox.value;
+  //prevent submit 
+  e.preventDefault();
+
 let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=` + geocodeKey;
 
 fetch(url)
 .then(response => response.json() )
 .then(data => {
-  //log full response 
+  //log full response
+  ZipCodetoLatlong(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
+
+  console.log('text-box value=', textBox.value) 
   console.log(data)
-  console.log(data.results[0].address_components[0].long_name);
+  console.log('zip code entered=', data.results[0].address_components[0].long_name);
   console.log('lat', data.results[0].geometry.location.lat);
   console.log('long', data.results[0].geometry.location.lng);
 })
 .catch(err => console.warn(err.message));
 
-let formattedZipCode = data.results[0].address_components[0].long_name;
+//let formattedZipCode = data.results[0].address_components[0].long_name;
 
+}
 
+let ZipCodetoLatlong = function (lat, long) {
+  
+  var location = new google.maps.LatLng(lat,long);
+  
+  var request = {
+    location: location,
+    radius: '500',
+    type: ['restaurant']
+  };
+  
+  service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, callback);
+  
+  function callback(results) {
+    console.log(results)
+  }
+};
 
-
-
-//take formattedZipCode, grab lat-long
+let latLong
 
 
 
@@ -43,7 +73,7 @@ let formattedZipCode = data.results[0].address_components[0].long_name;
 
 function getSelectedValue() {
   let selectedValue = document.getElementById('dropdown1').value;
-  console.log(selectedValue);
+  //console.log(selectedValue);
 }
 
 //dropdown button 
@@ -66,7 +96,7 @@ let zipCodeAndCuisine = function () {
     
     zipValue.push(zipCode);
     
-    console.log(zipValue);
+    //console.log(zipValue);
     
   };
   addZipCode();
@@ -77,7 +107,7 @@ let zipCodeAndCuisine = function () {
       cuisine:'2' 
     }
       cuisineValue.push(cuisineContent);
-      console.log(cuisineValue);
+     // console.log(cuisineValue);
     
   }
   addCuisine();
@@ -90,9 +120,9 @@ let validZipCodeChecker = function () {
   textBox.addEventListener('click', function() {
     
     if(isNaN(textBox.value)) {
-      console.log('this is not a number');
+      //console.log('this is not a number');
     } else {
-      console.log('this is a number');
+      //console.log('this is a number');
     }
   });
 }
@@ -150,7 +180,7 @@ optionsClick();
 let searchZipCode = function () {
   
   zipCodeBtn.addEventListener('click', function() {
-    console.log('clicked');
+    //console.log('clicked');
     zipCodeAndCuisine();
     
     //fetchGoogleAPI();
