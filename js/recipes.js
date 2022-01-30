@@ -1,3 +1,5 @@
+// Global vars
+
 var cuisine = "Mexican";
 var keyword = "Chicken"
 var newNumber = false;
@@ -5,18 +7,16 @@ var recipeNumber = Math.round(Math.random() * 20)
 var recipeNumberArr = [];
 recipeNumberArr.push(recipeNumber);
 
-console.log(recipeNumber);
-
-
+// Functions to get random recipes without repeats
 function numberReset () {
   randomNumber();
   numberCheck();
 }
-
+    // Randomize recipe number
 function randomNumber () {
    recipeNumber = Math.round(Math.random() * 20);
 }
-
+    //Check if it's in the array, if so repeat Number Reset
 function numberCheck () {
   for (var i = 0; i < recipeNumberArr.length; i++) {
     if (recipeNumber === recipeNumberArr[i]) {
@@ -24,12 +24,6 @@ function numberCheck () {
     }
   }
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.carousel');
-    var options = {};
-    // var instances = M.Carousel.init(elems, options);
-})
 
 // theMealDb API
 
@@ -42,12 +36,10 @@ function mealSearch () {
   })
   .then(function(data) {
     console.log(data);
-    // console.log(data.hits[recipeNumber].recipe.label);
-    // console.log(data.hits[recipeNumber].recipe.images.REGULAR.url);
 
     // APPEND Recipe Image
     $(".responsive-img").remove();
-    var recipeImage = $("<img>").attr("src", data.hits[recipeNumber].recipe.images.REGULAR.url).addClass("responsive-img").attr("width", "100%").attr("height", "100%");
+    var recipeImage = $("<img>").attr("src", data.hits[recipeNumber].recipe.images.REGULAR.url).addClass("responsive-img z-depth-2 center-align").attr("width", "100%").attr("height", "100%");
     $(".recipe-image").append(recipeImage);
 
     // APPEND Next Button
@@ -59,10 +51,30 @@ function mealSearch () {
       mealSearch();
     })
 
+    // APPEND Save Button
+    $(".saveBtn").remove();
+    $("<button>").text("⭐️ Favorite").addClass("btn blue-grey darken-3 nextBtn").attr("id", "save-button").appendTo(".recipe-image");
+    $("#save-button").on("click", function() {
+      
+      // HEY JUNJIE
+      // ADD LOCALSTORAGE FUNCTIONS HERE
+      // TO THIS EVENT LISTENER
+
+      // We need the cuisine type, the recipe name, and the recipe link for our localStorage Obj
+      // cuisine is a global var
+      // the other two are from API calls below
+
+      console.log("Saved!");
+    })
+
+
     // REPLACE header with Recipe Name
+      // JUNJIE, here's the RECIPE NAME we need for localStorage
     $(".recipe-content").find("h5").text(data.hits[recipeNumber].recipe.label);
 
+
     // APPEND Recipe Source and Link
+      // JUNJIE, here's the RECIPE LINK we need for localStorage
     $(".source-link").remove();
     var source = $("<a>").text(data.hits[recipeNumber].recipe.source).addClass("source-link").attr("href", data.hits[recipeNumber].recipe.url);
     $("#from").text("From: ")
@@ -72,27 +84,75 @@ function mealSearch () {
     $(".recipe-time").remove();
     var timeNum = data.hits[recipeNumber].recipe.totalTime;
     if (timeNum !== 0) {
-      var time = $("<p>").text("Time: " + timeNum + " minutes").addClass("recipe-time");
-      $(".recipe-content").append(time);
-    } 
+      var time = $("#time").text("Time: " + timeNum + " minutes").addClass("recipe-time flow-text");
+    }
 
     // Append Ingredients
     $(".ingredient-list").remove();
     var ingredients = data.hits[recipeNumber].recipe.ingredients;
     for (var i = 0; i < ingredients.length; i++) {
-      $("<p>").text(ingredients[i].text).addClass("ingredient-list").appendTo("#ingredients");
+      $("<p>").text(ingredients[i].text).addClass("ingredient-list flow-text").appendTo("#ingredients");
     }
   })
 }
 
-// mealSearch();
-
-$("#cuisine-input").val().toLowerCase().replace(/\ /g, "%20")
-
+// Calls mealSearch with Search Click
 $("#search").on("click", function() {
-  // error when entries are blank, If statement to remove extra API call before input value
-  cuisine = "&cuisineType=" + $("#cuisine-input").val().toLowerCase().replace(/\ /g, "%20");
-  keyword = "&q=" + $("#keyword-input").val().toLowerCase().replace(/\ /g, "%20");
+  var cuisineInput = $("#cuisine-input").val().toLowerCase().replace(/\ /g, "%20");
+  if (cuisineInput !== "") {
+    cuisine = "&cuisineType=" + $("#cuisine-input").val().toLowerCase().replace(/\ /g, "%20");
+  } else {
+    cuisine = "";
+  }
 
+  var keywordInput = $("#keyword-input").val().toLowerCase().replace(/\ /g, "%20");
+  if (keywordInput !== "") {
+    keyword = "&q=" + $("#keyword-input").val().toLowerCase().replace(/\ /g, "%20");
+  } else {
+    keyword = "";
+  }
+  
+  if (cuisine !== "" || keyword !== "") {
   mealSearch();
+  console.log("https://api.edamam.com/api/recipes/v2?type=public" + keyword + "&app_id=b3dd42ee&app_key=%20722cf0bbfd82e53f97d6ac5ff393c653%09" + cuisine);
+  }
 });
+
+
+// Materialize Autocomplete
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.autocomplete');
+  M.Autocomplete.init(elems, {
+    data: {
+      "American": null,
+      "Asian": null,
+      "British": null,
+      "Caribbean": null,
+      "Central Europe": null,
+      "Chinese": null,
+      "Eastern Europe": null,
+      "French": null,
+      "Indian": null,
+      "Italian": null,
+      "Japanese": null,
+      "Kosher": null,
+      "Mediterranean": null,
+      "Mexican": null,
+      "Middle Eastern": null,
+      "Nordic": null,
+      "South American": null,
+      "South East Asian": null
+    },
+    limit: 2
+  });
+});
+
+
+//Carousel event listen, unused
+
+// document.addEventListener('DOMContentLoaded', function() {
+//   var elems = document.querySelectorAll('.carousel');
+//   var options = {};
+//   // var instances = M.Carousel.init(elems, options);
+// })
