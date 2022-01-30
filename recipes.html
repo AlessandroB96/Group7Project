@@ -15,7 +15,9 @@
 </head>
 <body>
 
-    <div class="row center contain">
+    <!-- original recipe html -->
+
+    <!-- <div class="row center contain">
 
         <div class="col l12 main-title">
 
@@ -34,15 +36,67 @@
 
         </div>
 
-        <div class="col l6 title2">
+        <div class="col l6 title2" id="recipe-div">
             <h1>where recipes will go</h1>
         </div>
         
+    </div> -->
+    <div class="row main-container">
+        <div class="col l3 navigation #ff5252 red accent-2">
+            <ul class="nav">
+                <li>
+                    <div class="user-view">
+                        <div class="greeting">
+                            <p>Find a Recipe!</p>
+                        </div>
+                        <img class="conch2 center-align responsive-img" src="./assets/images/conch.svg">
+                        <p class="left">Welcome to the Food Conch! Choose which Cuisine you'd like make:</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <input type="text" id="cuisine-input" placeholder="   Cuisine:"></input>
+                        <input type="text" id="keyword-input" placeholder="   Keywords:"></input>
+
+                        <!-- Dropdown Trigger -->
+                        <a class='btn blue-grey darken-3' href='#' id="search">Search</a>
+                        <!-- Dropdown Structure -->
+                        <!-- <ul id='dropdown1' class='dropdown-content blue-grey darken-3'>
+                            <li class="li1"><a href="#!">Cuisine</a></li>
+                            <li><a href="#!">Italian</a></li>
+                            <li><a href="#!">Mexican</a></li>
+                            <li><a href="#!">Chinese</a></li>
+                        </ul> -->
+                    </div>
+                    <!-- <div class="search-btn-container">
+                        <a class="waves-effect waves-light btn #37474f blue-grey darken-3" id="search-zipcode">Search Zip Code</a>
+                    </div> -->
+                </li>
+            </ul>
+        </div>
+
+        <div class="col l5 map  center-align">
+            <div class="recipe-image"></div>
+            <!-- <div class="btn blue-grey darken-3" id="next-button">Next</div> -->
+            
+        </div>
+
+        <div class="col l4 menu recipe-info">
+            <div class="menu-content recipe-content">
+                <h5 class="center">Recipe Display</h5>
+                <p id="link-p">
+                    <span id="from"></span>
+                    <span id="link"></span>
+                </p>
+                <p id="time"></p>
+                <div id="ingredients"></div>
+            </div>
+        </div>
     </div>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="./js/recipes.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./js/recipes.js"></script>
 </body>
 </html>
