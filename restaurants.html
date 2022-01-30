@@ -15,7 +15,7 @@
 <body>
     
     <div class="row main-container">
-        <div class="col l3 navigation #ff5252 red accent-2">
+        <div class="col l3 m3 navigation #ff5252 red accent-2">
 
                 <ul class="nav">
                   <li><div class="user-view">
@@ -26,54 +26,57 @@
                     <p class="left">Welcome to the Food Conch! Enter your zip code below to request restuarant guidance:</p>
                   </div></li>
                   <li>
-                    <div>
+                    <form>
                       <input type="text" id="user-input" placeholder="   search..."></input>
-                    
+                      
+                    </form>
                         <!-- Dropdown Trigger -->
-                        <a class='dropdown-trigger btn blue-grey darken-3' href='#' data-target='dropdown1'>Radius</a>
+                        <a class='dropdown-trigger btn blue-grey darken-3' href='#' data-target='dropdown1' id="drop-down">Cuisine<span class="material-icons-outlined"></span></a>
                         <!-- Dropdown Structure -->
-                        <ul id='dropdown1' class='dropdown-content blue-grey darken-3'>
-                            <li class="li1"><a href="#!">10 miles away</a></li>
-                            <li><a href="#!">15 miles away</a></li>
-                            <li><a href="#!">25 miles away</a></li>
-                            <li><a href="#!">50 miles away</a></li>
+                        <ul id='dropdown1' class='dropdown-content blue-grey darken-3' onclick="getSelectedValue();">
+                            <li value="italian"><a id="italian">Italian</a></li>
+                            <li value="mexican"><a id="mexican">Mexican</a></li>
+                            <li value="japanese"><a id="japanese">Japanese</a></li>
+                            <li value="middle-eastern"><a id="middle-eastern">Middle Eastern</a></li>
+                            <li value="indian"><a id="indian">Indian</a></li>
                         </ul>
-                    </div>
+                      </br>
+
+                      <form>
+                        <select>
+                          <option value="" disabled selected>Choose your option</option>
+                          <option value="1">Option 1</option>
+                          <option value="2">Option 2</option>
+                          <option value="3">Option 3</option>
+                        </select>
+                      </form>
+
+                    </br>
 
                     <div class="search-btn-container">
-                        <a class="waves-effect waves-light btn #37474f blue-grey darken-3" id="search-zipcode">Search Zip Code</a>
+                        <a type="submit" class="waves-effect waves-light btn #37474f blue-grey darken-3" id="search-zipcode">Search Zip Code</a>
                     </div>
+                  </form>
                   </li>
                 </ul>
         </div>
 
-        <div class="col l5 map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d34073.51565618755!2d-74.03657500623265!3d40.682245623708006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a30a52e5a0f%3A0x61b50e8b5a501d9!2sShake%20Shack!5e0!3m2!1sen!2sus!4v1643227406502!5m2!1sen!2sus" width="" height="" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
+        <div class="col l5 m3" id="map-container"> 
+        <div id="map"></div>
+          
         </div>
 
-        <div class="col l4 menu">
+        <div class="col l4 m4 menu">
             <div class="menu-content">
               <h5 class="center">Menu Display</h5>
+              
             
             </div>
         </div>
     </div>
-
+    <script type="module" src="./js/restuarant.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKNTErV5U3asACIZuwRI39MxV4A3tNdNw&libraries=places&callback=initMap"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./js/restuarant.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="js/script.js"></script>
 </body>
 </html>
