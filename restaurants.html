@@ -15,14 +15,14 @@
 <body>
     
     <div class="row main-container">
-        <div class="col l3 m3 navigation #ff5252 red accent-2">
+        <div class="col l3 m3 navigation #ff5252 red lighten-5">
 
                 <ul class="nav">
                   <li><div class="user-view">
                     <div class="greeting">
                       <p>The Food Conch.</p>
                     </div>
-                    <img class="conch2" src="./assets/images/conch.svg">
+                    <img class="conch" src="./assets/images/conch-rot.svg">
                     <p class="left">Welcome to the Food Conch! Enter your zip code below to request restuarant guidance:</p>
                   </div></li>
                   <li>
@@ -31,9 +31,9 @@
                       
                     </form>
                         <!-- Dropdown Trigger -->
-                        <a class='dropdown-trigger btn blue-grey darken-3' href='#' data-target='dropdown1' id="drop-down">Cuisine<span class="material-icons-outlined"></span></a>
+                        <a class='dropdown-trigger btn red accent-2' href='#' data-target='dropdown1' id="drop-down">Cuisine<span class="material-icons-outlined"></span></a>
                         <!-- Dropdown Structure -->
-                        <ul id='dropdown1' class='dropdown-content blue-grey darken-3' onclick="getSelectedValue();">
+                        <ul id='dropdown1' class='dropdown-content red accent-2' onclick="getSelectedValue();">
                             <li value="italian"><a id="italian">Italian</a></li>
                             <li value="mexican"><a id="mexican">Mexican</a></li>
                             <li value="japanese"><a id="japanese">Japanese</a></li>
@@ -54,7 +54,7 @@
                     </br>
 
                     <div class="search-btn-container">
-                        <a type="submit" class="waves-effect waves-light btn #37474f blue-grey darken-3" id="search-zipcode">Search Zip Code</a>
+                        <a type="submit" class="waves-effect waves-light btn #37474f red accent-2" id="search-zipcode">Search Zip Code</a>
                     </div>
                   </form>
                   </li>

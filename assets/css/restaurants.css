@@ -1,9 +1,6 @@
-.conch2 {
+.conch {
     width: 40%;
-    transform: rotate(90deg);
     align-items: center;
-    margin-left: 80px;
-    margin-top: 2px;
 }
 
 .greeting {
