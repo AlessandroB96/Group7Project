@@ -35,7 +35,7 @@ function mealSearch () {
     return response.json();
   })
   .then(function(data) {
-    console.log(data);
+    $(".recipe-info").show();
 
     // APPEND Recipe Image
     $(".recipe-img").remove();
@@ -118,6 +118,8 @@ $("#search").on("click", function() {
   }
 });
 
+
+$(".recipe-info").hide();
 
 // Materialize Autocomplete
 
