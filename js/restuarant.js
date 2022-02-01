@@ -17,6 +17,43 @@ const gMap = document.getElementById('google-map');
 
 
 
+
+
+//junjieAdd~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+var restName = [];
+var restAddress = [];
+
+var restNameGet = [];
+var restAddressGet = [];
+
+function get() {
+  restNameGet = JSON.parse(localStorage.getItem("restName"));
+  restAddressGet = JSON.parse(localStorage.getItem("restAddress"));
+}
+get()
+
+function restShow() {
+  if (restNameGet === null) {
+    return;
+  }
+
+  //junjie add -------------------------------------------------------------------------------------------------
+  for (var i = 0; i < restNameGet.length; i++) {
+    $("<p>").text(restNameGet[i]+ "---" + restAddressGet[i]).addClass("saveName flow-text").appendTo(".menu-content")
+  }
+
+
+}
+restShow()
+
+//junjieAdd~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
 //listen for submit zip code 
 
 zipCodeBtn.addEventListener('click', geoCode);
@@ -47,6 +84,13 @@ function geoCode(e) {
 
   //let formattedZipCode = data.results[0].address_components[0].long_name;
 
+  //junjie add -------------------------------------------------------------------------------------------------
+
+
+  //junjie add -------------------------------------------------------------------------------------------------
+
+
+
 }
 //junjie add -------------------------------------------------------------------------------------------------
 var restNameSave = []
@@ -70,12 +114,23 @@ let ZipCodetoLatlong = function (lat, long) {
 
 
 
-//junjie add -------------------------------------------------------------------------------------------------
+    //junjie add -------------------------------------------------------------------------------------------------
+    $(".menu-content").remove();
+    $("<div>").addClass("menu-content").appendTo(".menu")
     restNameSave = results
+
     for (var i = 0; i < restNameSave.length; i++) {
-      $("<p>").text(restNameSave[i].name).addClass("saveName flow-text").appendTo(".menu-content")
+      $("<p>").text(restNameSave[i].name + "---" + restNameSave[i].vicinity).addClass("saveName flow-text").appendTo(".menu-content")
+
+
+      restName.push(restNameSave[i].name)
+      localStorage.setItem('restName', JSON.stringify(restName))
+
+
+      restAddress.push(restNameSave[i].vicinity)
+      localStorage.setItem('restAddress', JSON.stringify(restAddress))
     }
-//junjie add -------------------------------------------------------------------------------------------------
+    //junjie add -------------------------------------------------------------------------------------------------
 
   }
 
@@ -282,5 +337,8 @@ $(document).ready(function () {
   var sel = document.querySelectorAll('select');
   $('select').formSelect(sel);
 });
+
+
+
 
 
