@@ -2,6 +2,22 @@
 
 body {
     background-color: rgba(212, 31, 25, 0.507);
+    text-align: center;
+    width: 100%;
+}
+
+h1 {
+    padding: 0 20px;
+}
+
+h3 {
+    font-family: Lobster;
+}
+
+h6 {
+    font-family: 'Mukta', sans-serif;
+    font-size: 22px;
+    padding: 0 20px;
 }
 
 .logo-container {
@@ -16,8 +32,7 @@ body {
 }
 
 .conch {
-    transform: rotate(80deg);
-    width: 8%;
+    width: 150px;
     margin: auto;
 }
 
@@ -28,10 +43,6 @@ body {
     color: black;    
 }
 
-
-h6 {
-    font-family: 'Mukta', sans-serif;
-}
 #hero-message {
     font-family: 'Mukta', sans-serif;
 }
@@ -46,8 +57,8 @@ h6 {
     
 }
 #restaurants:hover , #recipes:hover {
-   opacity: 60%;
-   color: black;
+    opacity: 60%;
+    color: black;
 }
 
 #ramen-icon , #blender-icon {
@@ -58,10 +69,20 @@ h6 {
 .buttons {
     display: flex;
     flex: 1;
-    margin-left: 350px;
-    margin-right: 350px;
-    justify-content: center;
     justify-content: space-around;
+    min-width: 330px;
 }
 
-
+@media screen and (max-width: 600px) {
+    .buttons {
+        flex-direction: column;
+        margin: 20px 0;
+        justify-content: center;
+        min-width: none;
+    }
+    
+    .buttons a {
+        margin: 20px 20px;
+        text-align: center;
+    }
+}

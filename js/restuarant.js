@@ -11,7 +11,7 @@ const textBox = document.getElementById('user-input');
 const zipCodeBtn = document.getElementById('search-zipcode');
 const gMap = document.getElementById('google-map');
 
-
+$(".menu").hide();
 
 //listen for submit zip code 
 
@@ -24,6 +24,8 @@ function geoCode(e) {
   let zipCode = textBox.value;
   //prevent submit 
   e.preventDefault();
+
+  $(".menu").show();
 
 let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=` + geocodeKey;
 

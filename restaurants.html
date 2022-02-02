@@ -13,62 +13,70 @@
     <title>The Food Conch - Restaurants</title>
 </head>
 <body>
+
+  <header>
+    <a class="btn col s1 red accent-2 nav left" href=index.html id="homeBtn">Home</a>
+    <h3 class="center-align"><span class="material-icons" id="ramen-icon">ramen_dining</span></h3>
+    <a class="btn col s1 red accent-2 nav right" href=recipes.html id="recipeBtn">Recipes</a>
+  </header>
+
+  <div class="row main-container">
+    <div class="col l6 s12 navigation #ff5252 red lighten-5">
+      <ul class="nav">
+        <li>
+          <div class="user-view">
+            <div class="greeting">
+              <p>The Food Conch.</p>
+            </div>
+            <img class="conch" src="./assets/images/conch-rot.svg">
+            <p class="left">Welcome to the Food Conch! Enter your zip code below to request restuarant guidance:</p>
+          </div>
+        </li>
+        <li>
+          <form>
+            <input type="text" id="user-input" placeholder="   search..."></input>
+          </form>
+          <!-- Dropdown Trigger -->
+          <a class='dropdown-trigger btn red accent-2' href='#' data-target='dropdown1' id="drop-down">Cuisine<span class="material-icons-outlined"></span></a>
+          <!-- Dropdown Structure -->
+          <ul id='dropdown1' class='dropdown-content red accent-2' onclick="getSelectedValue();">
+              <li value="italian"><a id="italian">Italian</a></li>
+              <li value="mexican"><a id="mexican">Mexican</a></li>
+              <li value="japanese"><a id="japanese">Japanese</a></li>
+              <li value="middle-eastern"><a id="middle-eastern">Middle Eastern</a></li>
+              <li value="indian"><a id="indian">Indian</a></li>
+          </ul>
+
+        </br>
+
+        <form>
+          <select>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+        </form>
+
+      </br>
+
+      <div class="search-btn-container">
+          <a type="submit" class="waves-effect waves-light btn #37474f red accent-2" id="search-zipcode">Search Zip Code</a>
+      </div>
+    </form>
+    </li>
+  </ul>
+  </div>
+
+  <!-- <div class="col l6 s12" id="map-container"> 
+  <div id="map"></div> -->
     
-    <div class="row main-container">
-        <div class="col l3 m3 navigation #ff5252 red accent-2">
+  <!-- </div> -->
 
-                <ul class="nav">
-                  <li><div class="user-view">
-                    <div class="greeting">
-                      <p>The Food Conch.</p>
-                    </div>
-                    <img class="conch2" src="./assets/images/conch.svg">
-                    <p class="left">Welcome to the Food Conch! Enter your zip code below to request restuarant guidance:</p>
-                  </div></li>
-                  <li>
-                    <form>
-                      <input type="text" id="user-input" placeholder="   search..."></input>
-                      
-                    </form>
-                        <!-- Dropdown Trigger -->
-                        <a class='dropdown-trigger btn blue-grey darken-3' href='#' data-target='dropdown1' id="drop-down">Cuisine<span class="material-icons-outlined"></span></a>
-                        <!-- Dropdown Structure -->
-                        <ul id='dropdown1' class='dropdown-content blue-grey darken-3' onclick="getSelectedValue();">
-                            <li value="italian"><a id="italian">Italian</a></li>
-                            <li value="mexican"><a id="mexican">Mexican</a></li>
-                            <li value="japanese"><a id="japanese">Japanese</a></li>
-                            <li value="middle-eastern"><a id="middle-eastern">Middle Eastern</a></li>
-                            <li value="indian"><a id="indian">Indian</a></li>
-                        </ul>
-                      </br>
+  <div class="col l6 s12 menu right">
+      <div class="menu-content red lighten-5">
+        <h5 class="center">Menu Display</h5>
 
-                      <form>
-                        <select>
-                          <option value="" disabled selected>Choose your option</option>
-                          <option value="1">Option 1</option>
-                          <option value="2">Option 2</option>
-                          <option value="3">Option 3</option>
-                        </select>
-                      </form>
-
-                    </br>
-
-                    <div class="search-btn-container">
-                        <a type="submit" class="waves-effect waves-light btn #37474f blue-grey darken-3" id="search-zipcode">Search Zip Code</a>
-                    </div>
-                  </form>
-                  </li>
-                </ul>
-        </div>
-
-        <div class="col l5 m3" id="map-container"> 
-        <div id="map"></div>
-          
-        </div>
-
-        <div class="col l4 m4 menu">
-            <div class="menu-content">
-              <h5 class="center">Menu Display</h5>
               
             
             </div>

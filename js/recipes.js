@@ -35,16 +35,16 @@ function mealSearch () {
     return response.json();
   })
   .then(function(data) {
-    console.log(data);
+    $(".recipe-info").show();
 
     // APPEND Recipe Image
-    $(".responsive-img").remove();
-    var recipeImage = $("<img>").attr("src", data.hits[recipeNumber].recipe.images.REGULAR.url).addClass("responsive-img z-depth-2 center-align").attr("width", "100%").attr("height", "100%");
+    $(".recipe-img").remove();
+    var recipeImage = $("<img>").attr("src", data.hits[recipeNumber].recipe.images.REGULAR.url).addClass("recipe-img z-depth-2 center-align").attr("width", "100%").attr("height", "100%");
     $(".recipe-image").append(recipeImage);
 
     // APPEND Next Button
     $(".nextBtn").remove();
-    $("<button>").text("Next").addClass("btn blue-grey darken-3 nextBtn").attr("id", "next-button").appendTo(".recipe-image");
+    $("<button>").text("Next").addClass("btn red accent-2 nextBtn").attr("id", "next-button").appendTo(".recipe-image");
     $("#next-button").on("click", function() {
       numberReset();
       recipeNumberArr.push(recipeNumber);
@@ -53,7 +53,7 @@ function mealSearch () {
 
     // APPEND Save Button
     $(".saveBtn").remove();
-    $("<button>").text("⭐️ Favorite").addClass("btn blue-grey darken-3 nextBtn").attr("id", "save-button").appendTo(".recipe-image");
+    $("<button>").text("⭐️ Favorite").addClass("btn red accent-2 nextBtn").attr("id", "save-button").appendTo(".recipe-image");
     $("#save-button").on("click", function() {
       
       // HEY JUNJIE
@@ -118,6 +118,8 @@ $("#search").on("click", function() {
   }
 });
 
+
+$(".recipe-info").hide();
 
 // Materialize Autocomplete
 
