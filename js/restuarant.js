@@ -15,7 +15,7 @@ const textBox = document.getElementById('user-input');
 const zipCodeBtn = document.getElementById('search-zipcode');
 const gMap = document.getElementById('google-map');
 
-
+$(".menu").hide();
 
 
 
@@ -66,6 +66,7 @@ function geoCode(e) {
   //prevent submit 
   e.preventDefault();
 
+
   let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=` + geocodeKey;
 
   fetch(url)
@@ -83,6 +84,7 @@ function geoCode(e) {
     .catch(err => console.warn(err.message));
 
   //let formattedZipCode = data.results[0].address_components[0].long_name;
+
 
   //junjie add -------------------------------------------------------------------------------------------------
 

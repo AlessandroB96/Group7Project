@@ -59,6 +59,7 @@ function mealSearch() {
 
   // FETCH based on keyword and cuisine
   fetch("https://api.edamam.com/api/recipes/v2?type=public" + keyword + "&app_id=b3dd42ee&app_key=%20722cf0bbfd82e53f97d6ac5ff393c653%09" + cuisine)
+
     .then(function (response) {
       return response.json();
     })
@@ -163,12 +164,14 @@ function mealSearch() {
 
 // Calls mealSearch with Search Click
 $("#search").on("click", function () {
+
   var cuisineInput = $("#cuisine-input").val().toLowerCase().replace(/\ /g, "%20");
   if (cuisineInput !== "") {
     cuisine = "&cuisineType=" + $("#cuisine-input").val().toLowerCase().replace(/\ /g, "%20");
   } else {
     cuisine = "";
   }
+
 
   var keywordInput = $("#keyword-input").val().toLowerCase().replace(/\ /g, "%20");
   if (keywordInput !== "") {
