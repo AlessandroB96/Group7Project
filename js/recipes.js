@@ -67,7 +67,7 @@ function mealSearch() {
       console.log(data);
 
       // APPEND Recipe Image
-      $(".responsive-img").remove();
+      $(".recipe-img").remove();
       var recipeImage = $("<img>").attr("src", data.hits[recipeNumber].recipe.images.REGULAR.url).addClass("recipe-img z-depth-2 center-align").attr("width", "100%").attr("height", "100%");
       $(".recipe-image").append(recipeImage);
 
@@ -246,7 +246,7 @@ function show() {
   var j = recipeNameGet.length - 1;
 
   // APPEND Recipe Image
-  $(".responsive-img").remove();
+  $(".recipe-img").remove();
   var recipeImage = $("<img>").attr("src", recipeImageUrlGet[j]).addClass("recipe-img z-depth-2 center-align").attr("width", "100%").attr("height", "100%");
   $(".recipe-image").append(recipeImage);
 

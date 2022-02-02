@@ -116,7 +116,7 @@ let ZipCodetoLatlong = function (lat, long) {
 
     //junjie add -------------------------------------------------------------------------------------------------
     $(".menu-content").remove();
-    $("<div>").addClass("menu-content").appendTo(".menu")
+    $("<div>").addClass("menu-content red lighten-5").appendTo(".menu-container")
     restNameSave = results
 
     for (var i = 0; i < restNameSave.length; i++) {
