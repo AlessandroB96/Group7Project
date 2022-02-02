@@ -68,7 +68,7 @@ function mealSearch() {
 
       // APPEND Recipe Image
       $(".responsive-img").remove();
-      var recipeImage = $("<img>").attr("src", data.hits[recipeNumber].recipe.images.REGULAR.url).addClass("responsive-img z-depth-2 center-align").attr("width", "100%").attr("height", "100%");
+      var recipeImage = $("<img>").attr("src", data.hits[recipeNumber].recipe.images.REGULAR.url).addClass("recipe-img z-depth-2 center-align").attr("width", "100%").attr("height", "100%");
       $(".recipe-image").append(recipeImage);
 
       // APPEND Next Button
@@ -247,7 +247,7 @@ function show() {
 
   // APPEND Recipe Image
   $(".responsive-img").remove();
-  var recipeImage = $("<img>").attr("src", recipeImageUrlGet[j]).addClass("responsive-img z-depth-2 center-align").attr("width", "100%").attr("height", "100%");
+  var recipeImage = $("<img>").attr("src", recipeImageUrlGet[j]).addClass("recipe-img z-depth-2 center-align").attr("width", "100%").attr("height", "100%");
   $(".recipe-image").append(recipeImage);
 
   // REPLACE header with Recipe Name
