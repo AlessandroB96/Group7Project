@@ -18,16 +18,17 @@ h5 {
     margin: 0 0 20px 0;
 }
 
-#homeBtn, #recipeBtn {
+#homeBtn, #restaurantBtn {
     width: 150px;
 }
 
 .main-container {
-    margin: 0 40px 0 50px;
+    margin: 0 80px 0 90px;
 }
 
 .navigation {
     margin-top: 20px;
+    margin: 20px 0 0 0;
     height: var(--height);
     font-family: 'Mukta', sans-serif;
     border-radius: 5px;
@@ -44,6 +45,10 @@ h5 {
     font-family: 'Lobster';
     font-size: 30px;
     text-align: center;
+}
+
+.welcome {
+    font-size: 18px;
 }
 
 .inputs {
@@ -88,7 +93,7 @@ h5 {
 }
 
 .menu {
-    margin: 20px 0;
+    margin: 20px 0 0 20px;
     border-left: 2px solid black;
     height: var(--height);
     border-radius: 10px;
@@ -139,6 +144,7 @@ h5 {
     
     .menu {
         height: 100%;
+        margin-bottom: 50px;
     }
 
     .menu-content {

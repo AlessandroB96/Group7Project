@@ -23,11 +23,12 @@ h5 {
 }
 
 .main-container {
-    margin: 0 50px;
+    margin: 90px 150px;
 }
 
 .navigation {
     margin-top: 20px;
+    margin: auto;
     height: var(--height);
     font-family: 'Mukta', sans-serif;
     border-radius: 5px;
@@ -44,6 +45,10 @@ h5 {
     font-family: 'Lobster';
     font-size: 30px;
     text-align: center;
+}
+
+.welcome {
+    font-size: 18px;
 }
 
 .inputs {
@@ -68,11 +73,13 @@ h5 {
 
 #search-zipcode {
     width: 100%;
+    margin: 10px 0;
 }
 
 
 #map-container  {
-    margin-top: 20px;
+    height: 0px;
+    /* margin-top: 20px;
     max-width: var(--height);
     max-height: var(--height);
     display: block;
@@ -80,7 +87,7 @@ h5 {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
-    border-radius: 10px;
+    border-radius: 10px; */
 }
 /* #map-container {
     position: relative;
@@ -99,18 +106,30 @@ h5 {
 }
 
 .menu {
-    margin: 20px 0;
+    padding: 0;
     border-left: 2px solid black;
     height: var(--height);
     border-radius: 10px;
 }
 
-.menu-content {
+.menu-container {
     border-radius: 10px;
     height: var(--height);
     box-shadow: 1px 1px 5px black;
     font-family: 'Lobster';
     color: black;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.menu-content {
+    margin: 20px 0;
+}
+
+.saveName {
+    margin: 0 20px 10px 20px;
+    font-family: 'Mukta', sans-serif;
+    font-size: 18px;
 }
 
 .center {
@@ -126,7 +145,15 @@ h5 {
     font-size: 40px;
 }
 
+#map {
+    display: none;
+}
+
 @media screen and (max-width: 991px) {
+
+    .main-container {
+        margin: 30px 70px;
+    }
 
     .navigation {
         height: 100%;
@@ -134,13 +161,16 @@ h5 {
     
     .menu {
         height: 100%;
+        margin-top: 30px;
     }
 
     .menu-content {
         height: 100%;
+        
     }
 
-    #ingredients {
+    .menu-container {
+        height: 100%;
         padding: 10px;
         height: 1000%;
         overflow: none;
