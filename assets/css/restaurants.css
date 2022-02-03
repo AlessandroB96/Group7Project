@@ -2,7 +2,7 @@
     width: 40%;
     transform: rotate(90deg);
     align-items: center;
-    margin-left: 80px;
+    margin-left: 90px;
     margin-top: 2px;
 }
 
@@ -43,8 +43,8 @@
 #map-container {
     position: relative;
     overflow: hidden;
-    height: 350px;
-    width: 350px;
+    height: 0px;
+    width: 100px;
     margin-top: 100px;
     border-radius: 10px;
 }
@@ -59,16 +59,16 @@
 .menu {
     padding: 10px;
     border-left: 2px solid black;
-    min-height: 500px;
+    min-height: 1000px;
     border-radius: 10px;
-    
+    margin-top: -40px;
+    margin-left: 40px;
 }
 
 .menu-content {
     border-radius: 10px;
-    min-height: 500px;
-    box-shadow: 1px 1px 5px black;
-    min-width: 450px;
+    min-height: 650px;
+    box-shadow: 2px 2px 12px black;
     font-family: 'Lobster';
     color: black;
 }
