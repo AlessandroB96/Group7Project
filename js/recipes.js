@@ -61,9 +61,25 @@ function mealSearch() {
   fetch("https://api.edamam.com/api/recipes/v2?type=public" + keyword + "&app_id=b3dd42ee&app_key=%20722cf0bbfd82e53f97d6ac5ff393c653%09" + cuisine)
 
     .then(function (response) {
+      if (response.ok === false) {
+        numberReset();
+        return (mealSearch);
+      }
       return response.json();
     })
     .then(function (data) {
+
+      // if no results found, display "Sorry, No Results!"
+      if (data.hits.length === 0) {
+        $(".recipe-img").remove();
+        $(".nextBtn").remove();
+        $(".saveBtn").remove();
+        $("#from").text("")
+        $(".source-link").remove();
+        $(".recipe-time").remove();
+        $(".ingredient-list").remove();
+        $(".recipe-content").find("h5").text("Sorry, No Results!");
+      } else {
 
       // APPEND Recipe Image
       $(".recipe-img").remove();
@@ -84,17 +100,7 @@ function mealSearch() {
       $("<button>").text("⭐️ Favorite").addClass("btn blue-grey darken-3 nextBtn").attr("id", "save-button").appendTo(".recipe-image");
       $("#save-button").on("click", function () {
 
-        // HEY JUNJIE
-        // ADD LOCALSTORAGE FUNCTIONS HERE
-        // TO THIS EVENT LISTENER
-
-        // We need the cuisine type, the recipe name, and the recipe link for our localStorage Obj
-        // cuisine is a global var
-        // the other two are from API calls below
-
-
-        //junjieAdd~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+        //When Favorite Button clicked, add Local Storage
         recipeName.push(data.hits[recipeNumber].recipe.label)
     
         localStorage.setItem('Name', JSON.stringify(recipeName))
@@ -118,22 +124,13 @@ function mealSearch() {
         recipeIgredients.push(ingredients)
         
         localStorage.setItem('Igredients', JSON.stringify(recipeIgredients))
-        //junjieAdd~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-        
-
-
       })
 
-
-
       // REPLACE header with Recipe Name
-      // JUNJIE, here's the RECIPE NAME we need for localStorage
       $(".recipe-content").find("h5").text(data.hits[recipeNumber].recipe.label);
 
 
       // APPEND Recipe Source and Link
-      // JUNJIE, here's the RECIPE LINK we need for localStorage
       $(".source-link").remove();
       var source = $("<a>").text(data.hits[recipeNumber].recipe.source).addClass("source-link").attr("href", data.hits[recipeNumber].recipe.url);
       $("#from").text("From: ")
@@ -152,7 +149,7 @@ function mealSearch() {
       for (var i = 0; i < ingredients.length; i++) {
         $("<p>").text(ingredients[i].text).addClass("ingredient-list flow-text").appendTo("#ingredients");
       }
-    })
+    }})
 }
 
 // Calls mealSearch with Search Click
@@ -164,7 +161,6 @@ $("#search").on("click", function () {
   } else {
     cuisine = "";
   }
-
 
   var keywordInput = $("#keyword-input").val().toLowerCase().replace(/\ /g, "%20");
   if (keywordInput !== "") {
@@ -178,9 +174,7 @@ $("#search").on("click", function () {
   }
 });
 
-
 // Materialize Autocomplete
-
 document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('.autocomplete');
   M.Autocomplete.init(elems, {
@@ -208,28 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-
-//Carousel event listen, unused
-
-// document.addEventListener('DOMContentLoaded', function() {
-//   var elems = document.querySelectorAll('.carousel');
-//   var options = {};
-//   // var instances = M.Carousel.init(elems, options);
-// })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Append Favorited Recipe on page launch
 function show() {
   if (recipeNameGet === null) {
     return;
