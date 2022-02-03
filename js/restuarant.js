@@ -5,12 +5,6 @@
 geocodeKey = "AIzaSyATpxOUw9zQ_zM7ZoygDMWTvIjJoG2BcM4"
 
 
-const italian = document.getElementById('italian');
-const mexican = document.getElementById('mexican');
-const japanese = document.getElementById('japanese');
-const middleEastern = document.getElementById('middle-eastern');
-const indian = document.getElementById('indian');
-
 const textBox = document.getElementById('user-input');
 const zipCodeBtn = document.getElementById('search-zipcode');
 const gMap = document.getElementById('google-map');
@@ -74,11 +68,6 @@ function geoCode(e) {
       //log full response
       ZipCodetoLatlong(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
 
-      console.log('text-box value=', textBox.value)
-      console.log(data)
-      console.log('zip code entered=', data.results[0].address_components[0].long_name);
-      console.log('lat', data.results[0].geometry.location.lat);
-      console.log('long', data.results[0].geometry.location.lng);
     })
     .catch(err => console.warn(err.message));
 
@@ -110,7 +99,7 @@ let ZipCodetoLatlong = function (lat, long) {
   service.nearbySearch(request, callback);
 
   function callback(results) {
-    console.log(results)
+    
 
 
 
@@ -146,7 +135,7 @@ let ZipCodetoLatlong = function (lat, long) {
 
 function getSelectedValue() {
   let selectedValue = document.getElementById('dropdown1').value;
-  //console.log(selectedValue);
+ 
 }
 
 //dropdown button 
@@ -169,7 +158,6 @@ let zipCodeAndCuisine = function () {
 
     zipValue.push(zipCode);
 
-    //console.log(zipValue);
 
   };
   addZipCode();
@@ -180,80 +168,17 @@ let zipCodeAndCuisine = function () {
       cuisine: '2'
     }
     cuisineValue.push(cuisineContent);
-    // console.log(cuisineValue);
 
   }
   addCuisine();
 }
-
-//conditional to make sure user chooses a valid zip code and cuisine
-
-let validZipCodeChecker = function () {
-
-  textBox.addEventListener('click', function () {
-
-    if (isNaN(textBox.value)) {
-      //console.log('this is not a number');
-    } else {
-      //console.log('this is a number');
-    }
-  });
-}
-validZipCodeChecker();
-
-//conditionals checking for what food type you choose 
-
-let optionsClick = function () {
-
-  italian.addEventListener('click', function () {
-    if (this) {
-      console.log('you choose italian food');
-      cuisineValue.push()
-      //call displayItalian();
-    }
-  });
-  mexican.addEventListener('click', function () {
-    if (this) {
-      console.log('you choose mexican food');
-
-      //call displayMexican();
-    }
-  });
-  japanese.addEventListener('click', function () {
-    if (this) {
-      console.log('you choose japanese food');
-    }
-
-    //call displayJapanese();
-  });
-  middleEastern.addEventListener('click', function () {
-    if (this) {
-      console.log('you choose middleEastern food');
-    }
-
-    //call displayMiddleEastern();
-  });
-  indian.addEventListener('click', function () {
-    if (this) {
-      console.log('you choose indian food');
-    }
-
-    //call displayIndian();
-  });
-
-};
-
-optionsClick();
-
-
-//conditionals on url queries 
 
 
 //listen for zip code button search
 let searchZipCode = function () {
 
   zipCodeBtn.addEventListener('click', function () {
-    //console.log('clicked');
+   
     zipCodeAndCuisine();
 
     //fetchGoogleAPI();
@@ -263,7 +188,7 @@ searchZipCode();
 
 //listen for map click
 google.maps.event.addListener(map, 'click', function (event) {
-  console.log('map clicked');
+  
 });
 
 
@@ -276,7 +201,7 @@ let fetchGoogleAPI = function () {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+     
     });
 
 

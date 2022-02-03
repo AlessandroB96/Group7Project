@@ -64,7 +64,6 @@ function mealSearch() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
 
       // APPEND Recipe Image
       $(".recipe-img").remove();
@@ -95,39 +94,33 @@ function mealSearch() {
 
 
         //junjieAdd~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        // console.log(data.hits[recipeNumber].recipe.label)
-        // console.log(data.hits[recipeNumber].recipe.images.REGULAR.url)
-        // console.log(data.hits[recipeNumber].recipe.url)
-        // console.log(data.hits[recipeNumber].recipe.source)
-        // console.log(data.hits[recipeNumber].recipe.totalTime)
-        // console.log(ingredients)
 
         recipeName.push(data.hits[recipeNumber].recipe.label)
-        console.log(recipeName)
+    
         localStorage.setItem('Name', JSON.stringify(recipeName))
 
         recipeImageUrl.push(data.hits[recipeNumber].recipe.images.REGULAR.url)
-        console.log(recipeImageUrl)
+        
         localStorage.setItem('ImageUrl', JSON.stringify(recipeImageUrl))
 
         recipeUrl.push(data.hits[recipeNumber].recipe.url)
-        console.log(recipeUrl)
+        
         localStorage.setItem('Url', JSON.stringify(recipeUrl))
 
         recipeSource.push(data.hits[recipeNumber].recipe.source)
-        console.log(recipeSource)
+       
         localStorage.setItem('Source', JSON.stringify(recipeSource))
 
         recipeTotalTime.push(data.hits[recipeNumber].recipe.totalTime)
-        console.log(recipeTotalTime)
+        
         localStorage.setItem('Time', JSON.stringify(recipeTotalTime))
 
         recipeIgredients.push(ingredients)
-        console.log(recipeIgredients)
+        
         localStorage.setItem('Igredients', JSON.stringify(recipeIgredients))
         //junjieAdd~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        console.log("Saved!");
+        
 
 
       })
@@ -182,7 +175,6 @@ $("#search").on("click", function () {
 
   if (cuisine !== "" || keyword !== "") {
     mealSearch();
-    console.log("https://api.edamam.com/api/recipes/v2?type=public" + keyword + "&app_id=b3dd42ee&app_key=%20722cf0bbfd82e53f97d6ac5ff393c653%09" + cuisine);
   }
 });
 
