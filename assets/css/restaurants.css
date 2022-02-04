@@ -110,6 +110,7 @@ h5 {
     border-left: 2px solid black;
     height: var(--height);
     border-radius: 10px;
+    margin-bottom: 30px;
 }
 
 .menu-container {
@@ -176,4 +177,16 @@ h5 {
         overflow: none;
         overflow-y: none;
     }
+}
+
+@media screen and (max-width: 500px) {
+
+    header {
+        margin: 10px 30px;
+    }
+
+    .main-container {
+        margin: 0 30px 0 30px;
+    }    
+
 }

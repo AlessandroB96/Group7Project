@@ -5,7 +5,7 @@ var keyword = "Chicken"
 var newNumber = false;
 var recipeNumber = Math.round(Math.random() * 20)
 var recipeNumberArr = [];
-recipeNumberArr.push(recipeNumber);
+// recipeNumberArr.push(recipeNumber);
 
 
 //junjieAdd~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -56,18 +56,22 @@ function numberCheck() {
 // theMealDb API
 
 function mealSearch() {
-
+  numberReset();
+  recipeNumberArr.push(recipeNumber);
   // FETCH based on keyword and cuisine
   fetch("https://api.edamam.com/api/recipes/v2?type=public" + keyword + "&app_id=b3dd42ee&app_key=%20722cf0bbfd82e53f97d6ac5ff393c653%09" + cuisine)
 
     .then(function (response) {
       if (response.ok === false) {
         numberReset();
-        return (mealSearch);
+        return mealSearch();
       }
       return response.json();
     })
     .then(function (data) {
+
+      console.log(recipeNumber);
+      console.log(data);
 
       // if no results found, display "Sorry, No Results!"
       if (data.hits.length === 0) {
@@ -83,8 +87,15 @@ function mealSearch() {
 
       // APPEND Recipe Image
       $(".recipe-img").remove();
-      var recipeImage = $("<img>").attr("src", data.hits[recipeNumber].recipe.images.REGULAR.url).addClass("recipe-img z-depth-2 center-align").attr("width", "100%").attr("height", "100%");
-      $(".recipe-image").append(recipeImage);
+      
+        var recipeImage = $("<img>").attr("src", data.hits[recipeNumber].recipe.images.REGULAR.url).addClass("recipe-img z-depth-2 center-align").attr("width", "100%").attr("height", "100%");
+        
+        if (recipeImage !== "") {
+          $(".recipe-image").append(recipeImage);
+        } else {
+          recipeImage = $("<img>").attr("src", "https://cdn.pixabay.com/photo/2017/09/22/21/43/table-2777180_1280.jpg").addClass("recipe-img z-depth-2 center-align").attr("width", "100%").attr("height", "100%");
+          $(".recipe-image").append(recipeImage);
+        }
 
       // APPEND Next Button
       $(".nextBtn").remove();
@@ -150,6 +161,10 @@ function mealSearch() {
         $("<p>").text(ingredients[i].text).addClass("ingredient-list flow-text").appendTo("#ingredients");
       }
     }})
+    .catch(err => function() {
+      recipeImage = $("<img>").attr("src", "https://cdn.pixabay.com/photo/2017/09/22/21/43/table-2777180_1280.jpg").addClass("recipe-img z-depth-2 center-align").attr("width", "100%").attr("height", "100%");
+      $(".recipe-image").append(recipeImage);
+    });
 }
 
 // Calls mealSearch with Search Click
