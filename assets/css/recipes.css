@@ -92,6 +92,10 @@ h5 {
     margin: 10px 30px;
 }
 
+.placeholder {
+    box-shadow: none;
+}
+
 .menu {
     margin: 20px 0 0 20px;
     border-left: 2px solid black;
