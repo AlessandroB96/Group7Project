@@ -23,7 +23,7 @@ h5 {
 }
 
 .main-container {
-    margin: 0 80px 0 90px;
+    margin: 0 80px 0 80px;
 }
 
 .navigation {
@@ -92,6 +92,10 @@ h5 {
     margin: 10px 30px;
 }
 
+.placeholder {
+    box-shadow: none;
+}
+
 .menu {
     margin: 20px 0 0 20px;
     border-left: 2px solid black;
@@ -119,7 +123,7 @@ h5 {
 
 #ingredients {
     padding: 10px;
-    height: 70%;
+    height: 65%;
     overflow: hidden;
     overflow-y: auto;
 }
@@ -136,7 +140,20 @@ h5 {
     font-size: 40px;
 }
 
+@media screen and (max-width: 1100px) {
+    
+    #ingredients {
+        height: 60%;
+    }
+}
+
 @media screen and (max-width: 991px) {
+
+    .main-container {
+        margin: 0 60px 0 60px;
+    }    
+
+    
 
     .navigation {
         height: 100%;
@@ -157,4 +174,16 @@ h5 {
         overflow: none;
         overflow-y: none;
     }
+}
+
+@media screen and (max-width: 500px) {
+
+    header {
+        margin: 10px 30px;
+    }
+
+    .main-container {
+        margin: 0 30px 0 30px;
+    }    
+
 }

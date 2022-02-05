@@ -5,7 +5,7 @@ var keyword = "Chicken"
 var newNumber = false;
 var recipeNumber = Math.round(Math.random() * 20)
 var recipeNumberArr = [];
-recipeNumberArr.push(recipeNumber);
+// recipeNumberArr.push(recipeNumber);
 
 
 //junjieAdd~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -14,14 +14,14 @@ var recipeImageUrl = [];
 var recipeUrl = [];
 var recipeSource = [];
 var recipeTotalTime = [];
-var recipeIgredients = [];
+var recipeIngredients = [];
 
 var recipeNameGet = [];
 var recipeImageUrlGet = [];
 var recipeUrlGet = [];
 var recipeSourceGet = [];
 var recipeTotalTimeGet = [];
-var recipeIgredientsGet = [];
+var recipeIngredientsGet = [];
 
 function get() {
   recipeNameGet = JSON.parse(localStorage.getItem("Name"));
@@ -29,7 +29,7 @@ function get() {
   recipeUrlGet = JSON.parse(localStorage.getItem("Url"));
   recipeSourceGet = JSON.parse(localStorage.getItem("Source"));
   recipeTotalTimeGet = JSON.parse(localStorage.getItem("Time"));
-  recipeIgredientsGet = JSON.parse(localStorage.getItem("Igredients"));
+  recipeIngredientsGet = JSON.parse(localStorage.getItem("Ingredients"));
 }
 get()
 //junjieAdd~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -56,6 +56,9 @@ function numberCheck() {
 // theMealDb API
 
 function mealSearch() {
+  var placeholder = false;
+  numberReset();
+  recipeNumberArr.push(recipeNumber);
 
   // FETCH based on keyword and cuisine
   fetch("https://api.edamam.com/api/recipes/v2?type=public" + keyword + "&app_id=b3dd42ee&app_key=%20722cf0bbfd82e53f97d6ac5ff393c653%09" + cuisine)
@@ -63,11 +66,14 @@ function mealSearch() {
     .then(function (response) {
       if (response.ok === false) {
         numberReset();
-        return (mealSearch);
+        return mealSearch();
       }
       return response.json();
     })
     .then(function (data) {
+
+      console.log(recipeNumber);
+      console.log(data);
 
       // if no results found, display "Sorry, No Results!"
       if (data.hits.length === 0) {
@@ -80,11 +86,6 @@ function mealSearch() {
         $(".ingredient-list").remove();
         $(".recipe-content").find("h5").text("Sorry, No Results!");
       } else {
-
-      // APPEND Recipe Image
-      $(".recipe-img").remove();
-      var recipeImage = $("<img>").attr("src", data.hits[recipeNumber].recipe.images.REGULAR.url).addClass("recipe-img z-depth-2 center-align").attr("width", "100%").attr("height", "100%");
-      $(".recipe-image").append(recipeImage);
 
       // APPEND Next Button
       $(".nextBtn").remove();
@@ -105,7 +106,11 @@ function mealSearch() {
     
         localStorage.setItem('Name', JSON.stringify(recipeName))
 
-        recipeImageUrl.push(data.hits[recipeNumber].recipe.images.REGULAR.url)
+        if (placeholder === true) {
+          recipeImageUrl.push("./assets/images/conch-rot.svg")
+        } else {
+          recipeImageUrl.push(data.hits[recipeNumber].recipe.images.REGULAR.url)
+        }
         
         localStorage.setItem('ImageUrl', JSON.stringify(recipeImageUrl))
 
@@ -114,16 +119,16 @@ function mealSearch() {
         localStorage.setItem('Url', JSON.stringify(recipeUrl))
 
         recipeSource.push(data.hits[recipeNumber].recipe.source)
-       
+      
         localStorage.setItem('Source', JSON.stringify(recipeSource))
 
         recipeTotalTime.push(data.hits[recipeNumber].recipe.totalTime)
         
         localStorage.setItem('Time', JSON.stringify(recipeTotalTime))
 
-        recipeIgredients.push(ingredients)
+        recipeIngredients.push(ingredients)
         
-        localStorage.setItem('Igredients', JSON.stringify(recipeIgredients))
+        localStorage.setItem('Ingredients', JSON.stringify(recipeIngredients))
       })
 
       // REPLACE header with Recipe Name
@@ -149,7 +154,26 @@ function mealSearch() {
       for (var i = 0; i < ingredients.length; i++) {
         $("<p>").text(ingredients[i].text).addClass("ingredient-list flow-text").appendTo("#ingredients");
       }
+      
+      // PREPEND Recipe Image
+      $(".recipe-img").remove();
+      var recipeImage = $("<img>").attr("src", data.hits[recipeNumber].recipe.images.REGULAR.url).addClass("recipe-img z-depth-2 center-align").attr("width", "100%").attr("height", "100%");
+      $(".recipe-image").prepend(recipeImage);
     }})
+    .catch(err => function() {
+      // remove error in console if picture is missing
+    })
+      // append placeholder picture instead
+    .then (function (){
+      var imageCheck = $(".recipe-img");
+      console.log(imageCheck);
+      if (imageCheck.length === 0) {
+        placeholder = true;
+        recipeImage = $("<img>").attr("src", "./assets/images/conch-rot.svg").addClass("recipe-img z-depth-2 center-align placeholder").attr("width", "100%").attr("height", "100%");
+        $(".recipe-image").prepend(recipeImage);
+        
+      }
+    })
 }
 
 // Calls mealSearch with Search Click
@@ -213,6 +237,9 @@ function show() {
   // APPEND Recipe Image
   $(".recipe-img").remove();
   var recipeImage = $("<img>").attr("src", recipeImageUrlGet[j]).addClass("recipe-img z-depth-2 center-align").attr("width", "100%").attr("height", "100%");
+  if (recipeImageUrlGet[j] === "./assets/images/conch-rot.svg") {
+    $(recipeImage).addClass("placeholder");
+  }
   $(".recipe-image").append(recipeImage);
 
   // REPLACE header with Recipe Name
@@ -236,7 +263,7 @@ function show() {
 
   // Append Ingredients
   $(".ingredient-list").remove();
-  var ingredients = recipeIgredientsGet[0]
+  var ingredients = recipeIngredientsGet[0]
   for (var i = 0; i < ingredients.length; i++) {
     $("<p>").text(ingredients[i].text).addClass("ingredient-list flow-text").appendTo("#ingredients");
   }
